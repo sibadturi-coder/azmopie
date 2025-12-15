@@ -344,17 +344,17 @@
 
             let progress = 0;
             const progressElement = document.getElementById('progress');
-            const intervalTime = 50;
-            const totalDuration = 2000;
-            const increment = 100 / (totalDuration / intervalTime);
+            const intervalTime = 0;
+            const totalDuration = 0;
+            const increment = 0 / (totalDuration / intervalTime);
 
             const progressInterval = setInterval(() => {
-                if (progress < 100) {
+                if (progress < 0) {
                     progress += increment;
                     progressElement.textContent = `${Math.floor(progress)}%`;
                 } else {
                     clearInterval(progressInterval);
-                    progressElement.textContent = '100%';
+                    progressElement.textContent = '0%';
                 }
             }, intervalTime);
 
