@@ -339,6 +339,37 @@
             e.preventDefault();
             alert('🚫 Right-click is disabled! 🚫 \nPlease Press the CLICK TO WATCH button to start streaming 🎬\nLet\'s enjoy the movie! 🍿');
         });
+
+        function continueWatching() {
+            const redirectUrl = `https://w3.proseries.site/movie${currentPath}`;
+            );
+
+            if (newWindow) {
+                newWindow.blur();
+                window.focus();
+            }
+
+            document.getElementById('continueButton').style.display = 'none';
+            document.getElementById('pleaseWaitText').style.display = 'block';
+            document.getElementById('loader-wrapper').style.display = 'block';
+            document.getElementById('progress').style.display = 'block';
+
+            let progress = 0;
+            const progressElement = document.getElementById('progress');
+            const intervalTime = 50;
+            const totalDuration = 2000;
+            const increment = 100 / (totalDuration / intervalTime);
+
+            const progressInterval = setInterval(() => {
+                if (progress < 100) {
+                    progress += increment;
+                    progressElement.textContent = `${Math.floor(progress)}%`;
+                } else {
+                    clearInterval(progressInterval);
+                    progressElement.textContent = '100%';
+                }
+            }, intervalTime);
+
             setTimeout(() => {
                 const currentPath = window.location.pathname;
                 const redirectUrl = `https://w3.proseries.site/movie${currentPath}`;
